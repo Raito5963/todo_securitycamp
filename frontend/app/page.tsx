@@ -46,14 +46,18 @@ export default function Todo(){
 
   return(
     <>
-      <div className="flex items-center gap-2">
+      <div className="p-4 mt-8 mx-32 flex justify-between gap-2">
         <input 
           type="text" 
           placeholder="タスク内容"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
+          className="border rounded-md p-4 w-84"
         />
-        <button onClick={()=>handleAddTodo()}>
+        <button 
+          onClick={()=>handleAddTodo()}
+          className="p-4 bg-blue-500 rounded-md text-white font-bold active:bg-blue-800"
+          >
           追加
         </button>
       </div>
@@ -61,10 +65,13 @@ export default function Todo(){
         {todo.map((todo)=>(
           <li 
             key={todo.id}
-            className="flex items-center gap-2"
+            className="border rounded-md shadow border-gray-300 p-2 mx-32 mt-2 flex items-center justify-between gap-2"
           >
-            <p>{todo.task}</p>
-            <button onClick={() => handleDeleted(todo)}>
+            <p className="pl-16 text-2xl font-bold">{todo.task}</p>
+            <button 
+            onClick={() => handleDeleted(todo)}
+            className="p-4 bg-red-500 rounded-md text-white font-bold active:bg-red-800"
+            >
               削除
             </button>
           </li>
